@@ -3,7 +3,7 @@ package com.thatsussygroup.coursebuilder.controller
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@GetMapping(value = "/course")
+@RequestMapping(value = ["/course"])
 class CourseController{
 
     @GetMapping("/{id}")
