@@ -1,11 +1,13 @@
 <script lang="ts">
-    import { Dropdown, DropdownItem } from 'flowbite-svelte';
+    import SveltyPicker from 'svelty-picker';
   
     let credit = "";
     let required = "";
     let genEds = "";
     let message = "";
     let major = "";
+    let startTime: any;
+    let endTime : any;
 
     function handleSubmit(event:SubmitEvent){
     event.preventDefault();
@@ -13,7 +15,7 @@
     const intRequired = (required != "") ? Number(required) : -1;
     const intGenEds = (genEds != "")? Number(genEds) : -1;
     // this part is not working need to work on this 
-    if (intCredit<=0 || intGenEds < 0 || intRequired < 0) message = "Fill all of them you dumbfuck  ";
+    if (intCredit<=0 || intGenEds < 0 || intRequired < 0) message = "Please fill all of them";
 
     else window.location.href = "/flashcard";
   }
@@ -30,13 +32,8 @@
   <div class="dropdown">
     <!-- Dropdown Items, only visible if dropdownOpen is true -->
     <div class={`dropdown-content`}>
-      <!-- <button on:click={() => SelectedMajor("Computer Science")}
-        >Computer Science</button
-      >
-      <button on:click={() => SelectedMajor("Computer Engineering")}
-        >Computer Engineering</button
-      > -->
-    <p>Select a major cunt </p>
+      
+    <p>Select a major </p>
       <button on:click={() => SelectedMajor("Psychology")}>Psychology</button>
 
       <button on:click={() => SelectedMajor("Computer Science")}>Computer Science</button>
@@ -44,6 +41,12 @@
       <button  on:click={() => SelectedMajor("Computer Engineering")}>Computer Engineering</button>
 
       <button on:click={() => SelectedMajor("Undecided")}>Undecided</button>
+      <div class="datepicker-container">
+        <p>Start Time</p>
+        <SveltyPicker bind:value={startTime} format="hh:ii" displayFormat="HH:ii P"/>
+        <p>End time</p>
+        <SveltyPicker bind:value={endTime} format="hh:ii" displayFormat="HH:ii P"/>
+    </div>
 
     </div>
   </div>
@@ -125,5 +128,11 @@
 
   .form-container input {
     margin-top: 5px; /* Adds spacing between label and input */
+  }
+
+
+  .datepicker-container {
+    margin-top: 20px; /* Optional spacing above the datepicker */
+    display: block; /* Ensures the Datepicker takes up a whole line */
   }
 </style>
