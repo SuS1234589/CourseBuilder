@@ -29,9 +29,12 @@
 		{ id: 6, selected: false, name: 'ALLAHU AKBAr', description: "Terrorism" }
 	];
 
-	let uid = todos.length + 1;
+	
 
 
+	/**
+   * @param {{ id: number; selected: boolean; name: string; description: string; }} todo
+   */
 	function remove(todo) {
 		todos = todos.filter((t) => t !== todo);
         
@@ -63,6 +66,8 @@
 			</label>
 		{/each}
 	</div>
+    <div class="container">
+        {#if selectedTodos.length >0}
     <div class="selected-info">
         <h2>Selected Courses</h2>
         <ul>
@@ -71,19 +76,10 @@
             {/each}
         </ul>
     </div>
+    {/if}
+</div>
 
 <style>
-	.new-todo {
-		font-size: 1.4em;
-		width: 100%;
-		margin: 2em 0 1em 0;
-	}
-
-	.board {
-		max-width: 36em;
-		margin: 0 auto;
-	}
-
 	.left,
 	.right {
 		float: left;
@@ -137,9 +133,36 @@
 		opacity: 1;
 	}
 
+    .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Pushes content to the bottom */
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Optional styling for the selected info section */
+        .selected-info {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .selected-info h2 {
+            margin-top: 0;
+        }
+
+        .selected-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .selected-info li {
+            margin-bottom: 10px;
+        }
+
     
 </style>
-<div class="info">
-    <h2>INFORMATION</h2>
-    <p>{information}</p>
-</div>
+
