@@ -26,6 +26,10 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	// https://mvnrepository.com/artifact/org.optaplanner/optaplanner-core
+	implementation("org.optaplanner:optaplanner-core:9.44.0.Final")
+
 }
 
 kotlin {
